@@ -6,6 +6,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin:0px -10px;
 }
 .img_box{
   /* max-height: 250px; */
@@ -41,7 +42,7 @@
 }
 
 .item-name{
-  font-size: 1.5em;
+  font-size: calc(10px + 1.5vmin);
   margin: 0px;
   text-transform: uppercase;
 
@@ -49,7 +50,7 @@
 .description{
   margin:5px 2px 2px 2px;
   text-justify: auto;
-  font-size:1em;
+  font-size: calc(10px + 1.2vmin);
   text-align:left;
 }
 
