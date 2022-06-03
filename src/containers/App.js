@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Cardlist from "./cardlist";
-import SearchBox from './SearchBox';
+import Cardlist from "../components/cardlist";
+import SearchBox from '../components/SearchBox';
 //import { actorsAndCharacters } from "./details";
-import { movieDb } from "./moviedb";
+import { movieDb } from "../data/moviedb";
 import './App.css';
 
 class App extends Component {

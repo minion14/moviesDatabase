@@ -12,7 +12,6 @@
   /* max-height: 250px; */
   height:250px;
   width: 200px;
-  /* position: sticky; */
   border: 2px solid black;
   animation: 1s linear big;
   transition: all .8s ease-in-out;
@@ -35,7 +34,7 @@
   overflow: visible;
   height:auto;
   min-height: 200px;
-  margin-top:-80px;
+  margin-top:0px;
   position: absolute;
   transform: scale(1.1);
   background-color: rgba(211, 226, 226, 0.5);
