@@ -1,36 +1,31 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import Cardlist from "../components/cardlist";
 import SearchBox from '../components/SearchBox';
 //import { actorsAndCharacters } from "./details";
 import { movieDb } from "../data/moviedb";
 import './App.css';
+import * as action from '../store/actions'
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-            movies: movieDb,
-            searchField: ''
+            movies: movieDb
         }
     }
 
-    onSearchChange = (event) => {
-        this.setState({ searchField: event.target.value });
-    }
     render() {
 
-        // const filterChar = this.state.actorsAndCharacters.filter(actor => {
-        //     // console.log(this.state.searchField);
-        //     return actor.name.toLowerCase().includes(this.state.searchField.toLowerCase())||actor.description.toLowerCase().includes(this.state.searchField.toLowerCase());
-        // })
-
         const filtermoive = this.state.movies.filter(mov => {
-            return mov.name.toLowerCase().includes(this.state.searchField.toLocaleLowerCase()) || mov.description.toLocaleLowerCase().includes(this.state.searchField.toLowerCase())
+            return mov.name.toLowerCase().includes(this.props.searchField.toLocaleLowerCase()) || mov.description.toLocaleLowerCase().includes(this.props.searchField.toLowerCase())
         });
         return (
+            
             <div className="tc">
                 <h1>Top Grossing Movies</h1>
-                <SearchBox searchChange={this.onSearchChange} />
+                <SearchBox searchChange={this.props.onSearchChange} />
                 <div className='item-cards'>
                     {/* <Cardlist actorsAndCharacters={filterChar} /> */}
                     <Cardlist movies={filtermoive} />
@@ -39,4 +34,17 @@ class App extends Component {
         );
     }
 }
-export default App;
+
+const mapStateToProps = state => {
+    return {
+        searchField: state.searchField
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSearchChange: (event) => dispatch(action.setSearchField(event.target.value))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
